@@ -153,7 +153,7 @@ export default function ParticleLogo() {
   }, [])
 
   const drawCircle = useCallback((ctx: CanvasRenderingContext2D, x: number, y: number) => {
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "black";
     ctx.beginPath();
     ctx.arc(x, y, RADIUS, 0, 2 * Math.PI);
     ctx.fill();

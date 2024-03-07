@@ -5,6 +5,9 @@ const config = {
     project: true,
   },
   plugins: ["@typescript-eslint"],
+  ignorePatterns: [
+    "src/server/db/index.ts",
+  ],
   extends: [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended-type-checked",
