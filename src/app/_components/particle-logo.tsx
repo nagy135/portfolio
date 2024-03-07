@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useCallback, useEffect, useRef, type MouseEvent } from "react";
@@ -28,7 +27,7 @@ const letters = [
 const width = letters[0]!.length;
 const height = letters.length;
 const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 150;
+const CANVAS_HEIGHT = 250;
 const spacingX = CANVAS_WIDTH / width;
 const spacingY = CANVAS_HEIGHT / height;
 const RADIUS = 2;
@@ -37,6 +36,7 @@ const UPDATE_TICK = 2; // ms
 const RENDERING_WIDTH = CANVAS_WIDTH + GLOBAL_MARGIN * 2;
 const RENDERING_HEIGHT = CANVAS_HEIGHT + GLOBAL_MARGIN * 2;
 const MOUSE_RADIUS = 60;
+const DENSITY = 5;
 
 const isInRadius = (pX: number, pY: number, x: number, y: number, r: number): boolean => {
   return Math.sqrt(Math.pow(pX - x, 2) + Math.pow(pY - y, 2)) < r;
@@ -82,7 +82,6 @@ class Point {
 }
 
 const points = new Array<Point>();
-const density = 4;
 
 for (let iY = 0; iY < height; iY++) {
   for (let iX = 0; iX < width; iX++) {
@@ -90,13 +89,11 @@ for (let iY = 0; iY < height; iY++) {
       const x = iX * spacingX + GLOBAL_MARGIN;
       const y = iY * spacingY + GLOBAL_MARGIN;
 
-      for (let i = 0; i < density; i++) {
-        for (let j = 0; j < density; j++) {
-          points.push(new Point(x + i * (spacingX / density), y + j * (spacingY / density)));
+      for (let i = 0; i < DENSITY; i++) {
+        for (let j = 0; j < DENSITY; j++) {
+          points.push(new Point(x + i * (spacingX / DENSITY), y + j * (spacingY / DENSITY)));
         }
       }
-
-      // points.push(new Point(x + halfSpacingX, y + halfSpacingY));
     }
   }
 }
