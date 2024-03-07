@@ -6,7 +6,7 @@ const config = {
   },
   plugins: ["@typescript-eslint"],
   ignorePatterns: [
-    "src/server/db/index.ts",
+    "./src/server/db/index.ts",
   ],
   extends: [
     "next/core-web-vitals",
