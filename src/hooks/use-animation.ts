@@ -26,7 +26,7 @@ export const useAnimationFrame = (
     return () => {
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
-  }, []);
+  }, [animate]);
 };
 
 // const Counter = () => {
