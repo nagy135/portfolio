@@ -8,7 +8,6 @@ export default async function Home() {
   return (
     <>
       <AceternityLogo title={"Portfolio"} />
-      <Waves />
       <p className="text-center m-3 mt-5">
         Simple particles returning to original position (mouse move)
       </p>
@@ -21,6 +20,10 @@ export default async function Home() {
         Generating svg on fly to shift lines (click)
       </p>
       <ShiftingLines />
+      <p className="text-center m-3">
+        Simple animation of propagating waves as random movement of particles (click)
+      </p>
+      <Waves />
     </>
   );
 }

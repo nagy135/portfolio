@@ -9,10 +9,10 @@ const GLOBAL_MARGIN = 100;
 const RADIUS = 5;
 const GRID_WIDTH = 30;
 const GRID_HEIGHT = 30;
-const SLOWDOWN = 0.04;
+const SLOWDOWN = 0.4;
 const RENDERING_WIDTH = CANVAS_WIDTH + GLOBAL_MARGIN * 2;
 const RENDERING_HEIGHT = CANVAS_HEIGHT + GLOBAL_MARGIN * 2;
-const WAVE_WIDTH = 10;
+const WAVE_WIDTH = 45;
 
 class Point {
   x: number;
@@ -85,8 +85,8 @@ export default function Waves() {
           const distanceY = Math.max(0, point.originY - wave.y - wave.radius);
           const pushY = (1 - (RADIUS - distanceY) / RADIUS);
 
-          point.dx = pushX + Math.random() * 6 - 3;
-          point.dy = pushY + Math.random() * 6 - 3;
+          point.dx = pushX + Math.random() * 10 - 5;
+          point.dy = pushY + Math.random() * 10 - 5;
         }
       }
       wave.radius += 1;
