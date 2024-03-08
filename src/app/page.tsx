@@ -12,15 +12,15 @@ export default async function Home() {
         Simple particles returning to original position (mouse move)
       </p>
       <ParticleLogo />
-      <p className="text-center m-3">
+      <p className="text-center m-5">
         Moving parts of svg using css (mouse move)
       </p>
       <VocabularyLogo />
-      <p className="text-center m-3">
+      <p className="text-center my-5 mb-10">
         Generating svg on fly to shift lines (click)
       </p>
       <ShiftingLines />
-      <p className="text-center m-3">
+      <p className="text-center my-20">
         Simple animation of propagating waves as random movement of particles (click)
       </p>
       <Waves />
