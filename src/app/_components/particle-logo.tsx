@@ -32,11 +32,12 @@ const spacingX = CANVAS_WIDTH / width;
 const spacingY = CANVAS_HEIGHT / height;
 const RADIUS = 2;
 const GLOBAL_MARGIN = 100;
-const UPDATE_TICK = 2; // ms
+const UPDATE_TICK = 1; // ms
 const RENDERING_WIDTH = CANVAS_WIDTH + GLOBAL_MARGIN * 2;
 const RENDERING_HEIGHT = CANVAS_HEIGHT + GLOBAL_MARGIN * 2;
 const MOUSE_RADIUS = 60;
 const DENSITY = 5;
+const SLOWDOWN = 0.04;
 
 const isInRadius = (pX: number, pY: number, x: number, y: number, r: number): boolean => {
   return Math.sqrt(Math.pow(pX - x, 2) + Math.pow(pY - y, 2)) < r;
@@ -141,8 +142,8 @@ export default function ParticleLogo() {
       const distanceX = point.originX - point.x;
       const distanceY = point.originY - point.y;
 
-      point.dx += distanceX * 0.1;
-      point.dy += distanceY * 0.1;
+      point.dx += distanceX * SLOWDOWN;
+      point.dy += distanceY * SLOWDOWN;
 
       point.dx *= 0.50;
       point.dy *= 0.50;
@@ -159,7 +160,7 @@ export default function ParticleLogo() {
   return <>
     <canvas
       onMouseMove={(e) => mouseMove(e, [canvasRect.current[0], canvasRect.current[1]])}
-      className="mx-auto mt-5" ref={canvasRef} width={RENDERING_WIDTH} height={RENDERING_HEIGHT} >
+      className="mx-auto mt-2" ref={canvasRef} width={RENDERING_WIDTH} height={RENDERING_HEIGHT} >
     </canvas>
   </>;
 }
