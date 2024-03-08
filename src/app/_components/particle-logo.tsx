@@ -57,6 +57,7 @@ const RENDERING_HEIGHT = CANVAS_HEIGHT + GLOBAL_MARGIN * 2;
 const MOUSE_RADIUS = 60;
 const DENSITY = 2;
 const SLOWDOWN = 0.04;
+const MOUSE_DAMPENING = 0.9;
 
 const isInRadius = (pX: number, pY: number, x: number, y: number, r: number): boolean => {
   return Math.sqrt(Math.pow(pX - x, 2) + Math.pow(pY - y, 2)) < r;
@@ -74,8 +75,8 @@ const mouseMove = (e: MouseEvent, canvasRect: [number, number]) => {
       const distanceY = point.y - y;
       const pushY = (1 - (RADIUS - distanceY) / RADIUS);
 
-      point.dx += pushX;
-      point.dy += pushY;
+      point.dx = pushX * MOUSE_DAMPENING;
+      point.dy = pushY * MOUSE_DAMPENING;
     }
   }
 };
