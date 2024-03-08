@@ -1,5 +1,5 @@
 "use client";
-import { CSSProperties, type FC, useCallback, useRef, useState } from "react";
+import { CSSProperties, type FC, Fragment, useCallback, useRef, useState } from "react";
 
 const RADIUS = 5;
 const cellSize = 20;
@@ -114,7 +114,7 @@ const ShiftingLines: FC = () => {
       >
         {grid.map((row, y) => {
           return (
-            <>
+            <Fragment key={`row-${y}`}>
               {row.map((val, x) => {
                 const hasRightSibling = siblingExists(grid, x + 1, y);
                 const hasLeftSibling = siblingExists(grid, x - 1, y);
@@ -175,7 +175,7 @@ z`}
                   );
                 } else return null;
               })}
-            </>
+            </Fragment>
           );
         })}
       </svg>
