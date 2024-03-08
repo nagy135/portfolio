@@ -7,8 +7,8 @@ const CANVAS_WIDTH = 400;
 const CANVAS_HEIGHT = 450;
 const GLOBAL_MARGIN = 100;
 const RADIUS = 5;
-const GRID_WIDTH = 30;
-const GRID_HEIGHT = 30;
+const GRID_WIDTH = 40;
+const GRID_HEIGHT = 40;
 const SLOWDOWN = 0.4;
 const RENDERING_WIDTH = CANVAS_WIDTH + GLOBAL_MARGIN * 2;
 const RENDERING_HEIGHT = CANVAS_HEIGHT + GLOBAL_MARGIN * 2;
@@ -77,16 +77,14 @@ export default function Waves() {
   const update = useCallback((points: Point[]) => {
     for (const wave of waves) {
       for (const point of points) {
-        if (!isInRadius(point.originX, point.originY, wave.x, wave.y, wave.radius - WAVE_WIDTH / 2) &&
-          isInRadius(point.originX, point.originY, wave.x, wave.y, wave.radius + WAVE_WIDTH / 2)
+        if (!isInRadius(point.x, point.y, wave.x, wave.y, wave.radius - WAVE_WIDTH / 2) &&
+          isInRadius(point.x, point.y, wave.x, wave.y, wave.radius + WAVE_WIDTH / 2)
         ) {
-          const distanceX = Math.max(0, point.originX - wave.x - wave.radius);
-          const pushX = (1 - (RADIUS - distanceX) / RADIUS);
-          const distanceY = Math.max(0, point.originY - wave.y - wave.radius);
-          const pushY = (1 - (RADIUS - distanceY) / RADIUS);
+          const distanceX = (point.x - wave.x) / wave.radius * 40;
+          const distanceY = (point.y - wave.y) / wave.radius * 40;
 
-          point.dx = pushX + Math.random() * 10 - 5;
-          point.dy = pushY + Math.random() * 10 - 5;
+          point.dx = distanceX / 100;
+          point.dy = distanceY / 100;
         }
       }
       wave.radius += 1;
