@@ -7,7 +7,7 @@ import Waves from "./_components/waves";
 export default async function Home() {
   return (
     <>
-      <AceternityLogo title={"Portfolio"} />
+      <AceternityLogo title={"Welcome"} />
       <p className="text-center m-3 mt-5">
         Simple particles returning to original position (mouse move)
       </p>
