@@ -75,8 +75,8 @@ const mouseMove = (e: MouseEvent, canvasRect: [number, number]) => {
       const distanceY = point.y - y;
       const pushY = (1 - (RADIUS - distanceY) / RADIUS);
 
-      point.dx = pushX * MOUSE_DAMPENING;
-      point.dy = pushY * MOUSE_DAMPENING;
+      point.dx = pushX * MOUSE_DAMPENING + Math.random() * 10;
+      point.dy = pushY * MOUSE_DAMPENING + Math.random() * 10;
     }
   }
 };
