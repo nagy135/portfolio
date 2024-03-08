@@ -1,5 +1,5 @@
 "use client";
-import { CSSProperties, FC, useCallback, useRef, useState } from "react";
+import { CSSProperties, type FC, useCallback, useRef, useState } from "react";
 
 const RADIUS = 5;
 const cellSize = 20;
@@ -41,10 +41,8 @@ export type TColorSetup = {
 
 const siblingExists = (grid: number[][], x: number, y: number): boolean => {
   if (grid.length > y) {
-    // @ts-ignore
-    if (grid[0].length > x) {
-      // @ts-ignore
-      if (grid[y][x]) return true;
+    if (grid[0] && grid[0].length > x) {
+      if (grid[y]![x]) return true;
     }
   }
   return false;
@@ -70,26 +68,24 @@ const getCellColor = (
         ? colorCache[rightSiblingIndex]
         : colorSetup.baseChoices[
         Math.floor(Math.random() * colorSetup.baseChoices.length)
-        ]) as string;
+        ])!;
   colorCache[`${x}x${y}`] = colorChoice;
   return colorChoice;
 };
 
-const globalOffset = [20, 20];
+const globalOffset: [number, number] = [20, 20];
 
 const ShiftingLines: FC = () => {
   const [animating, setAnimating] = useState(false);
   const [offsets, setOffsets] = useState(grid.map(() => 0));
 
-  // @ts-ignore
-  const maxWidth = cellSize * grid[0].length;
+  const maxWidth = cellSize * grid[0]!.length;
 
   const intervalHandleRef = useRef<NodeJS.Timer | null>(null);
   const handleClick = useCallback(() => {
     if (animating && intervalHandleRef.current) {
       setAnimating(false);
-      // @ts-ignore
-      clearInterval(intervalHandleRef.current);
+      clearInterval(intervalHandleRef.current as unknown as number);
       return;
     }
     setAnimating(true);
@@ -97,26 +93,23 @@ const ShiftingLines: FC = () => {
     intervalHandleRef.current = setInterval(() => {
       setOffsets((prev) => prev.map((e, i) => (i % 2 ? e + 1 : e - 1)));
     }, REFRESH_WAIT);
-  }, [offsets, animating]);
+  }, [animating]);
 
   return (
     <div
       style={{
         margin: '0 auto',
-        // @ts-ignore
-        width: grid[0].length * cellSize,
+        width: grid[0]!.length * cellSize,
         height: grid.length * 1.5 * cellHeight,
         maskImage:
-          "radial-gradient(circle, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 65%,rgba(0,0,0,0) 71%, rgba(0,0,0,0) 100%)",
+          "radial-gradient(circle, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 65%,rgba(0,0,0,0) 81%, rgba(0,0,0,0) 100%)",
         WebkitMaskImage:
-          "radial-gradient(circle, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 65%,rgba(0,0,0,0) 71%, rgba(0,0,0,0) 100%)",
+          "radial-gradient(circle, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 65%,rgba(0,0,0,0) 81%, rgba(0,0,0,0) 100%)",
       }}
       onClick={() => handleClick()}
     >
       <svg
-        // @ts-ignore
-        width={grid[0].length * cellSize + globalOffset[0]}
-        // @ts-ignore
+        width={grid[0]!.length * cellSize + globalOffset[0]}
         height={grid.length * 2 * cellHeight + globalOffset[1]}
       >
         {grid.map((row, y) => {
@@ -128,11 +121,9 @@ const ShiftingLines: FC = () => {
                 const color = getCellColor(x, y, val, colorSetup);
 
                 const newX =
-                  // @ts-ignore
-                  (x * cellSize + globalOffset[0] + offsets[y]) % maxWidth;
+                  (x * cellSize + globalOffset[0] + (offsets[y] ?? 0)) % maxWidth;
                 const fill = color === "" ? "white" : color;
 
-                // @ts-ignore
                 const finalY = 1.5 * y * cellHeight + globalOffset[1];
                 const finalX = newX > 0 ? newX : newX + maxWidth;
 
