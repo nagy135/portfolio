@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, type MouseEvent } from "react";
+import { useAnimationFrame } from "../../hooks/use-animation";
 
 // const letters = [
 //   [1, 0],
@@ -124,7 +125,7 @@ export default function ParticleLogo() {
   const lastUpdate = useRef<number>(0);
   const canvasRect = useRef<[number, number]>([0, 0]);
 
-  const loop = useCallback(() => {
+  useAnimationFrame((_deltaTime) => {
     if (!canvasRef.current) return;
 
     const cRect = canvasRef.current.getBoundingClientRect();
@@ -145,14 +146,7 @@ export default function ParticleLogo() {
       drawCircle(ctx, point.x, point.y);
     }
 
-
-    requestAnimationFrame(loop);
-  }, []);
-
-  useEffect(() => {
-    requestAnimationFrame(loop);
-  }, [])
-
+  }, 1000 / 240);
 
   const update = useCallback(() => {
     for (const point of points) {
