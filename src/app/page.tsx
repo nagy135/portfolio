@@ -1,4 +1,7 @@
+"use client";
+
 import { AceternityLogo } from "./_components/aceternity-logo";
+import { Drag } from "./_components/drag";
 import ParticleLogo from "./_components/particle-logo";
 import ShiftingLines from "./_components/shifting-lines";
 import VocabularyLogo from "./_components/vocabulary-logo";
@@ -24,6 +27,10 @@ export default async function Home() {
         Simple animation of propagating waves as random movement of particles (click)
       </p>
       <Waves />
+      <p className="text-center my-20">
+        Drag demo using framer motion
+      </p>
+      <Drag />
     </>
   );
 }
