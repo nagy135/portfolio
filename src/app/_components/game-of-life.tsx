@@ -18,7 +18,7 @@ const GameOfLife: FC = () => {
     if (!id) return;
 
     const intervalId = setInterval(() => {
-      fetch(`${process.env.GO_GOL_URL}/tick?id=${id}`)
+      fetch(`${process.env.NEXT_PUBLIC_GO_GOL_URL}/tick?id=${id}`)
         .then(e => e.json())
         .then(e => setGrid(e as number[][]))
         .catch(e => console.error(e))
