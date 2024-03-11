@@ -1,3 +1,5 @@
+"use client";
+
 import { AceternityLogo } from "./_components/aceternity-logo";
 import { Drag } from "./_components/drag";
 import GameOfLife from "./_components/game-of-life";
@@ -6,7 +8,7 @@ import ShiftingLines from "./_components/shifting-lines";
 import VocabularyLogo from "./_components/vocabulary-logo";
 import Waves from "./_components/waves";
 
-export default async function Home() {
+export default function Home() {
   return (
     <>
       <AceternityLogo title={"Welcome"} />
