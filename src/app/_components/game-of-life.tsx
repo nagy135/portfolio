@@ -17,16 +17,17 @@ const GameOfLife: FC = () => {
   useEffect(() => {
     if (!id) return;
 
-    const intervalId = setInterval(async () => {
-      const response = await fetch(`https://go-gol.infiniter.tech/tick?id=${id}`)
-      const data = await response.json();
-      setGrid(data);
+    const intervalId = setInterval(() => {
+      fetch(`https://go-gol.infiniter.tech/tick?id=${id}`)
+        .then(e => e.json())
+        .then(e => setGrid(e as number[][]))
+        .catch(e => console.error(e))
     }, REFRESH_RATE);
 
     return () => clearInterval(intervalId);
   }, [id]);
 
-  const gridWidth = grid && grid[0] ? grid[0].length : 0;
+  const gridWidth = grid?.[0] ? grid[0].length : 0;
   const gridHeight = grid ? grid.length : 0;
   const cellHeight = HEIGHT / gridHeight;
   const cellWidth = WIDTH / gridWidth;

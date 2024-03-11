@@ -1,5 +1,5 @@
 "use client";
-import { CSSProperties, type FC, Fragment, useCallback, useRef, useState } from "react";
+import { type FC, Fragment, useCallback, useRef, useState } from "react";
 
 const RADIUS = 5;
 const cellSize = 20;

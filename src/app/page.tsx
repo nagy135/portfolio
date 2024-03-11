@@ -1,5 +1,3 @@
-"use client";
-
 import { AceternityLogo } from "./_components/aceternity-logo";
 import { Drag } from "./_components/drag";
 import GameOfLife from "./_components/game-of-life";

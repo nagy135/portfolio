@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, type MouseEvent } from "react";
+import { useCallback, useRef, type MouseEvent } from "react";
 import { useAnimationFrame } from "../../hooks/use-animation";
 
 // const letters = [
