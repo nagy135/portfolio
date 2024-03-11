@@ -5,14 +5,14 @@ export const Drag = () => {
   const x = useMotionValue(0);
   const xInput = [-100, 0, 100];
   const background = useTransform(x, xInput, [
-    "linear-gradient(180deg, #ff008c 0%, rgb(211, 9, 225) 100%)",
+    "linear-gradient(180deg, #0b0b0b 0%, #0a0a0a 100%)",
     "linear-gradient(180deg, #7700ff 0%, rgb(68, 0, 255) 100%)",
-    "linear-gradient(180deg, rgb(230, 255, 0) 0%, rgb(3, 209, 0) 100%)"
+    "linear-gradient(180deg, rgb(230, 225, 0) 0%, rgb(30, 179, 10) 100%)"
   ]);
   const color = useTransform(x, xInput, [
-    "rgb(211, 9, 225)",
-    "rgb(68, 0, 255)",
-    "rgb(3, 209, 0)"
+    "rgb(0, 9, 0)",
+    "rgb(10, 0, 10)",
+    "rgb(0, 9, 0)",
   ]);
   const tickPath = useTransform(x, [10, 100], [0, 1]);
   const crossPathA = useTransform(x, [-10, -55], [0, 1]);

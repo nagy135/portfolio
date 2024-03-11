@@ -2,6 +2,7 @@
 
 import { AceternityLogo } from "./_components/aceternity-logo";
 import { Drag } from "./_components/drag";
+import GameOfLife from "./_components/game-of-life";
 import ParticleLogo from "./_components/particle-logo";
 import ShiftingLines from "./_components/shifting-lines";
 import VocabularyLogo from "./_components/vocabulary-logo";
@@ -31,6 +32,10 @@ export default async function Home() {
         Drag demo using framer motion
       </p>
       <Drag />
+      <p className="text-center my-20">
+        Game of Life implementation using one golang thread per cell each tick (on backend)
+      </p>
+      <GameOfLife />
     </>
   );
 }
