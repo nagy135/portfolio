@@ -3,7 +3,7 @@ import { type FC, Fragment, useCallback, useState, useEffect } from "react";
 
 const HEIGHT = 300;
 const WIDTH = 600;
-const REFRESH_RATE = 200;
+const REFRESH_RATE = 300;
 
 const GameOfLife: FC = () => {
   const [id, setId] = useState(Math.floor(Math.random() * 100000));
