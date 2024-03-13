@@ -7,6 +7,7 @@ import ParticleLogo from "./_components/particle-logo";
 import ShiftingLines from "./_components/shifting-lines";
 import VocabularyLogo from "./_components/vocabulary-logo";
 import Waves from "./_components/waves";
+import Whirpool from "./_components/whirpool";
 
 export default function Home() {
   return (
@@ -29,13 +30,17 @@ export default function Home() {
       </p>
       <Waves />
       <p className="text-center my-20">
-        Drag demo using framer motion
-      </p>
-      <Drag />
-      <p className="text-center my-20">
         Game of Life implementation using one golang thread per cell each tick (on backend)
       </p>
       <GameOfLife />
+      <p className="text-center my-20">
+        Particle whirpool (mouse move)
+      </p>
+      <Whirpool />
+      <p className="text-center my-20">
+        Drag demo using framer motion
+      </p>
+      <Drag />
     </>
   );
 }
